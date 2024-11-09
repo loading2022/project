@@ -1,6 +1,8 @@
-const learnMenu = document.querySelector(".learn");
-const subMenu = document.querySelector(".submenu");
-learnMenu.addEventListener("click", function(event){
-    event.preventDefault();
-    subMenu.classList.toggle("show");
+const learnMenu = document.querySelectorAll(".learn");
+const subMenus = document.querySelectorAll(".submenu");
+learnMenu.forEach((menu, index) => {
+    menu.addEventListener("click", function(event) {
+        event.preventDefault();
+        subMenus[index].classList.toggle("show");
+    });
 });
