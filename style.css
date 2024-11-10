@@ -177,7 +177,7 @@ main h2 {
     display: none;
 }
 
-@media(max-width:360px){
+@media(max-width:768px){
     .menu {
         display: none;
         background-color: rgba(0, 0, 0, 0.7);
@@ -402,7 +402,7 @@ main h2 {
     cursor: pointer;
     border-radius: 5px;
 }
-@media(max-width:360px){
+@media(max-width:768px){
     .experience{
         flex-direction: column;
     }
