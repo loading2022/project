@@ -82,7 +82,7 @@ header h1{
 }
 
 header h1 a {
-    color: #fff;
+    color: black;
     text-decoration: none;
     font-size: 36px;
 }
@@ -272,6 +272,7 @@ main h2 {
     display: block;
     height: auto;
     border-radius: 8px;
+    margin: 0 auto;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -302,6 +303,10 @@ main h2 {
 .prestudy .simple-right h3{
     text-align:right;
 }
+.qgis-right{
+    margin-top:50px;
+}
+
 @media (max-width:768px){
     .prestudy li:nth-child(odd){
         flex-direction:column;
