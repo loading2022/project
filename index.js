@@ -23,7 +23,11 @@ hamburgerMenu.addEventListener("click", function(event){
 closeBtn.addEventListener("click", function() {
     menu.classList.remove("show"); 
 });
-
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        menu.classList.remove('show'); 
+    }
+});
 more.forEach((more, index)=>{
     more.addEventListener("click", function(event){
         console.log("click");
