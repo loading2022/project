@@ -140,6 +140,7 @@ main{
 }
 
 footer {
+    width:100%;
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -452,4 +453,73 @@ main h2 {
 }
 .show{
     display: block;
+}
+/*project.html*/
+.work-title{
+    font-size:20px;
+    color:black;
+    font-weight:bold;
+    margin-top:20px;
+}
+.work-figure{
+    text-align: center;
+    margin:20px auto;
+}
+.work-figure img{
+    width:70%;
+    border-radius:10px;
+}
+.diagram{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:20px;
+}
+.rectangle{
+    background-color:white;
+    padding:15px 30px;
+}
+.rectangle:hover{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.startEnd{
+    background-color: #fff;
+    padding:15px 30px;
+    border-radius:20px;
+}
+.demo{
+    width:760px;
+    display: block;
+    margin:0 auto;
+    border-radius:10px;
+    margin-top:30px;
+}
+.table{
+    width: 70%;
+    margin:0 auto;
+    border-collapse: collapse; 
+    margin-top:30px;
+}
+.table th, .table td {
+    padding: 8px 12px;
+    text-align: center; 
+    border: 1px solid #ddd;
+}
+  
+.table th {
+    background-color: #f4f4f4; 
+    font-weight: bold;
+}
+  
+.table tr:nth-child(even) {
+    background-color: #f9f9f9; 
+}
+  
+.table tr:hover {
+    background-color: #f1f1f1; 
+}
+@media(max-width:768px){
+    .demo{
+        width:90%;
+    }
 }
