@@ -49,11 +49,15 @@
             <h3 class="work-title">專題實作步驟</h3>
             <p>使用YOLOv7模型，加入車禍照片並使用LableImg標示，進行訓練，一旦偵測到事故則將肇事相關車輛進行影像截圖，並回傳經緯度。透過經緯度搜尋周遭監視器，取得周遭監視器數秒前之畫面，進行車輛重新辨識（Reidentification），截圖匹配程度最高的車輛，進入車牌辨識。透過辨識到的車牌搜尋車主以及他的相關連絡人並傳送該車發生車禍的訊息，以下流程圖為此專案執行步驟。</p>
             <div class="diagram">
-                <a href="#" class="startEnd">開始</a>
+                <div class="startEnd">開始</div>
                 <i class="fa-solid fa-arrow-right"></i>
-                <a href="#" class="rectangle">偵測車禍</a>
+                <a href="detail.html?type=detect-accident" class="rectangle">偵測車禍</a> 
                 <i class="fa-solid fa-arrow-right"></i>
-                <a href="#" class="rectangle">車輛跨鏡追蹤</a>
+                <a href="detail.html?type=cross-tracking" class="rectangle">車輛跨鏡追蹤</a>
+                <i class="fa-solid fa-arrow-right"></i>
+                <a href="detail.html?type=license-plate-recognition" class="rectangle">車牌辨識</a>
+                <i class="fa-solid fa-arrow-right"></i>
+                <div class="startEnd">結束</div>
             </div>
             <h3 class="work-title">專題 Demo</h3>
             <p>介面使用 PyQt5 簡易界面，介面主要呈現車禍影片、辨識過程和結果，在辨識完車禍後會在下方顯示車禍圖片、監視器編號等資訊供警方參考。</p>
@@ -81,6 +85,7 @@
                     <td>車牌辨識模型 (Yolov7)</td>
                 </tr>
             </table>
+            <div class="overlay" id="overlay"></div>
         </main>
     </div>
     <footer>

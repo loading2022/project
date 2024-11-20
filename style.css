@@ -462,11 +462,11 @@ main h2 {
     margin-top:20px;
 }
 .work-figure{
+    width:70%;
     text-align: center;
     margin:20px auto;
 }
 .work-figure img{
-    width:70%;
     border-radius:10px;
 }
 .diagram{
@@ -523,3 +523,15 @@ main h2 {
         width:90%;
     }
 }
+
+/*detail.html*/
+#detail-content h3{
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight:bold;
+}
+#detail-content p{
+    margin-bottom:30px;
+}
+
