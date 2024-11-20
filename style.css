@@ -487,15 +487,21 @@ main h2 {
     padding:15px 30px;
     border-radius:20px;
 }
+.fa-arrow-right{
+    display: block;
+}
+.fa-arrow-down{
+    display: none;
+}
 .demo{
-    width:760px;
+    width:700px;
     display: block;
     margin:0 auto;
     border-radius:10px;
     margin-top:30px;
 }
 .table{
-    width: 70%;
+    width: 90%;
     margin:0 auto;
     border-collapse: collapse; 
     margin-top:30px;
@@ -520,7 +526,20 @@ main h2 {
 }
 @media(max-width:768px){
     .demo{
-        width:90%;
+        max-width:90%;
+    }
+    .diagram {
+        flex-direction: column;
+    }
+    .rectangle, .startEnd {
+        width: 35%;
+        text-align: center;
+    }
+    .fa-arrow-right{
+        display: none;
+    }
+    .fa-arrow-down{
+        display: block;
     }
 }
 
@@ -534,4 +553,38 @@ main h2 {
 #detail-content p{
     margin-bottom:30px;
 }
+#detail-content h4{
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight:bold;
+}
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #3b5998;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+.back-button:hover {
+    background-color: #0056b3; 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+@media(max-width:768px){
+    img{
+        max-width: 90%;
+    }
+}

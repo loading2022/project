@@ -43,20 +43,24 @@
             <p>此系統可提供即時現場影像，協助警方迅速了解事故狀況，並且可即時捕捉道路監視器畫面，在車禍發生時能立即向警政、使用者/車主及緊急聯絡人發送訊息與影像，如下圖所示。此系統不僅能提升事故處理效率，更讓緊急聯絡人即時了解車禍情況，以採取適切應對與後續處理。
             </p>
             <figure class="work-figure">
-                <img src="./images/1-2.jpg" alt="系統示意圖">
+                <img src="./images/1-2.jpg" alt="系統示意圖" style="max-width: 90%;">
                 <figcaption>系統示意圖</figcaption>
             </figure>
             <h3 class="work-title">專題實作步驟</h3>
             <p>使用YOLOv7模型，加入車禍照片並使用LableImg標示，進行訓練，一旦偵測到事故則將肇事相關車輛進行影像截圖，並回傳經緯度。透過經緯度搜尋周遭監視器，取得周遭監視器數秒前之畫面，進行車輛重新辨識（Reidentification），截圖匹配程度最高的車輛，進入車牌辨識。透過辨識到的車牌搜尋車主以及他的相關連絡人並傳送該車發生車禍的訊息，以下流程圖為此專案執行步驟。</p>
-            <div class="diagram">
+            <div class="diagram" id = "flowchart">
                 <div class="startEnd">開始</div>
                 <i class="fa-solid fa-arrow-right"></i>
+                <i class="fa-solid fa-arrow-down"></i>
                 <a href="detail.html?type=detect-accident" class="rectangle">偵測車禍</a> 
                 <i class="fa-solid fa-arrow-right"></i>
+                <i class="fa-solid fa-arrow-down"></i>
                 <a href="detail.html?type=cross-tracking" class="rectangle">車輛跨鏡追蹤</a>
                 <i class="fa-solid fa-arrow-right"></i>
+                <i class="fa-solid fa-arrow-down"></i>
                 <a href="detail.html?type=license-plate-recognition" class="rectangle">車牌辨識</a>
                 <i class="fa-solid fa-arrow-right"></i>
+                <i class="fa-solid fa-arrow-down"></i>
                 <div class="startEnd">結束</div>
             </div>
             <h3 class="work-title">專題 Demo</h3>

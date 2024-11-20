@@ -49,7 +49,6 @@ function closeOverlay() {
 const params = new URLSearchParams(window.location.search);
 
 const type = params.get('type');
-console.log(type);
 if (type == "detect-accident"){
     detailContent.innerHTML = '<h2>車禍偵測</h2>\
     <h3>蒐集車禍資料</h3>\
@@ -64,22 +63,46 @@ if (type == "detect-accident"){
     <h3>車禍辨識模型</h3>\
     <p>將標註完的結果按照約 8:2 的比例分為訓練集和驗證集，將這些資料放入 Yolov7 模型中進行訓練。在訓練過程中進\行參數微調。\
     然而，我們發現如果將輕微車禍的圖片放入資料集中，會導致模型容易判斷錯誤。因此，我們重新過濾了圖片，將輕微車禍從資料集中刪除，並重新標註了車禍區域。\
-    最終，在 epoch 100、batch size 16 的情況下準確率最佳，準確率為 86%。</p>\
+    最終，在 epoch 100、batch size 16 的情況下準確率最佳，準確率為 87%。</p>\
     <figure class="work-figure">\
         <img src="./images/1-4.jpg" alt="測試圖片">\
         <figcaption>測試圖片</figcaption>\
     </figure>';
 }
 else if (type == "cross-tracking"){
-    detailContent.innerHTML = '<h2>車輛跨鏡追蹤</h2>';
+    detailContent.innerHTML = '<h2>車輛跨鏡追蹤</h2>\
+    <h3>車輛跨鏡追蹤資料集</h3>\
+    <p>資料集為 <a href="https://qmul-vric.github.io/">VRIC dataset</a>，包含60,430 張車輛圖像，擁有5,622 個車輛，資料集為解析度低、模糊、不同角度的車輛圖片，擁有在白天和夜間的不同道路交通場景</p>\
+    <figure class="work-figure">\
+        <img src="./images/1-12.png" alt="VRIC 資料集示意圖">\
+        <figcaption>VRIC 資料集示意圖</figcaption>\
+    </figure>\
+    <h3>實作概念</h3>\
+    <p>每個監視器中都會拍下各車輛照片，如果在發生車禍後，找尋當下的監視器編號，並且往前推附近的監視器畫面，將畫面中所有車輛進行重辨識，找出最相符的車輛，再進行之後的車牌辨識。</p>\
+    <h3>實作步驟</h3>\
+    <p>偵測到車禍後 → 回傳發生地點 (經緯度或 cam 編號) 並紀錄車禍的車輛 → 利用地點搜尋附近監視器 → 使用車輛辨識模型辨識出一秒前保存畫面中所有車輛，並紀錄這些車輛 → 使用 ReID 模型將車禍車輛與附近畫面中所有車輛進行重辨識 → 將分數最高的車輛進行車牌辨識。</p>\
+    <h4>偵測到車禍後 → 回傳發生地點 (經緯度或 cam 編號) 並紀錄車禍的車輛</h4>\
+    <h4>利用地點搜尋附近監視器</h4>\
+    <h4>車輛辨識模型辨識</h4>\
+    <h4>ReID 模型進行重辨識 → 將分數最高的車輛進行車牌辨識</h4>\
+    <p>運用 <a href="https://github.com/regob/vehicle_reid">vehicle_reid repo</a> 訓練 ReID 模型，訓練結果如下所示</p>\
+    <figure class="work-figure">\
+        <img src="./images/1-13.jpg" alt="各項指標">\
+        <figcaption>各項指標</figcaption>\
+    </figure>\
+    <p>模型測試方法為給定一張目標車輛圖片，與多張其他車輛圖片進行比對，其中包括一張正確車輛的圖片。每張車輛圖片下方顯示的數字為比對分數，分數越高表示車輛相似性越高。綠框標示的是分數最高的車輛。</p>\
+    <figure class="work-figure">\
+        <img src="./images/1-14.png" alt="ReID 測試圖片">\
+        <figcaption>ReID 測試圖片</figcaption>\
+    </figure>\
+    ';
 }
 else if (type == "license-plate-recognition"){
     detailContent.innerHTML = '<h2>車牌辨識</h2>\
     <h3>車牌資料集</h3>\
     <p>資料集為 AOLP(Application Oriented License Plate) 資料集，資料分別有 AC(停車場出入口)、RP(路邊拍攝) 和 LE(交通監控) 三種不同場景下的資料，並且各類別中也有白天和晚上的資料，總共三千筆左右資料。</p>\
     <figure class="work-figure">\
-        <img src="./images/1-6.jpg" alt="車牌資料集">\
-        <img src="./images/1-7.jpg" alt="車牌資料集">\
+        <img src="./images/1-6.png" alt="車牌資料集" style="width:90%;">\
         <figcaption>車牌辨識資料集示意圖</figcaption>\
     </figure>\
     <h3>使用 Yolov7 偵測車牌位置</h3>\
@@ -106,3 +129,21 @@ else if (type == "license-plate-recognition"){
     <h3>使用 EasyOCR 偵測車牌號碼</h3>\
     <p>EasyOCR 是一個開源的光學字元辨識（OCR）工具，支援多種語言和文字格式，在此專題中主要用來辨識車牌號碼。</p>';
 }
+
+const backToMainBtn = document.querySelector("#back-to-main");
+if (backToMainBtn){
+    backToMainBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        window.location.href = "project.html#flowchart";
+        setTimeout(() => {
+            const target = document.querySelector("#flowchart");
+            console.log(target);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                });
+            }
+        }, 100); 
+    });
+};
