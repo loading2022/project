@@ -467,6 +467,7 @@ main h2 {
     margin:20px auto;
 }
 .work-figure img{
+    width: 90%;
     border-radius:10px;
 }
 .diagram{
@@ -482,6 +483,7 @@ main h2 {
 .rectangle:hover{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .startEnd{
     background-color: #fff;
     padding:15px 30px;
@@ -582,6 +584,10 @@ main h2 {
 .back-button:active {
     transform: translateY(0);
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+.index{
+    display: flex;
+    justify-content: space-between;
 }
 @media(max-width:768px){
     img{

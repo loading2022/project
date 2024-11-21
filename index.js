@@ -64,6 +64,17 @@ if (type == "detect-accident"){
     <p>將標註完的結果按照約 8:2 的比例分為訓練集和驗證集，將這些資料放入 Yolov7 模型中進行訓練。在訓練過程中進\行參數微調。\
     然而，我們發現如果將輕微車禍的圖片放入資料集中，會導致模型容易判斷錯誤。因此，我們重新過濾了圖片，將輕微車禍從資料集中刪除，並重新標註了車禍區域。\
     最終，在 epoch 100、batch size 16 的情況下準確率最佳，準確率為 87%。</p>\
+    <p>以下為訓練時的各項指標</p>\
+    <div class="index">\
+        <figure class="work-figure">\
+            <img src="./images/1-15.png" alt="測試圖片">\
+            <figcaption>各項指標圖</figcaption>\
+        </figure>\
+        <figure class="work-figure">\
+            <img src="./images/1-16.png" alt="confusion matrix">\
+            <figcaption>Confusion matrix</figcaption>\
+        </figure>\
+    </div>\
     <figure class="work-figure">\
         <img src="./images/1-4.jpg" alt="測試圖片">\
         <figcaption>測試圖片</figcaption>\
