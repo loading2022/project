@@ -549,6 +549,11 @@ main h2 {
     display: flex;
     gap:30px;
 }
+@media(max-width:768px){
+    .flex{
+        flex-direction:column;
+    }
+}
 /*detail.html*/
 #detail-content h3{
     font-size: 22px;
