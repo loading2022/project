@@ -92,8 +92,15 @@ else if (type == "cross-tracking"){
     <p>每個監視器中都會拍下各車輛照片，如果在發生車禍後，找尋當下的監視器編號，並且往前推附近的監視器畫面，將畫面中所有車輛進行重辨識，找出最相符的車輛，再進行之後的車牌辨識。</p>\
     <h3>實作步驟</h3>\
     <p>偵測到車禍後 → 回傳發生地點 (經緯度或 cam 編號) 並紀錄車禍的車輛 → 利用地點搜尋附近監視器 → 使用車輛辨識模型辨識出一秒前保存畫面中所有車輛，並紀錄這些車輛 → 使用 ReID 模型將車禍車輛與附近畫面中所有車輛進行重辨識 → 將分數最高的車輛進行車牌辨識。</p>\
-    <h4>偵測到車禍後 → 回傳發生地點 (經緯度或 cam 編號) 並紀錄車禍的車輛</h4>\
-    <h4>利用地點搜尋附近監視器</h4>\
+    <h4>偵測到車禍後 → 回傳發生地點 (經緯度或 cam 編號) 並紀錄車禍的車輛 → 利用地點搜尋附近監視器</h4>\
+    <p>利用「台灣即時影像監視器」所提供的<a href="https://www.twipcam.com/api/document" target="_blank">即時影像 API</a>，此 API 查詢座標附近的即時影像監視器，監視器示意圖如下所示</p>\
+    <figure class="work-figure">\
+        <img src="./images/1-18.png" alt="即時影像監視器">\
+        <img src="./images/1-19.png" alt="即時影像監視器">\
+        <img src="./images/1-20.png" alt="即時影像監視器">\
+        <img src="./images/1-21.png" alt="即時影像監視器">\
+        <figcaption>即時影像監視器</figcaption>\
+    </figure>\
     <h4>車輛辨識模型辨識</h4>\
     <h4>ReID 模型進行重辨識 → 將分數最高的車輛進行車牌辨識</h4>\
     <p>運用 <a href="https://github.com/regob/vehicle_reid">vehicle_reid repo</a> 訓練 ReID 模型，訓練結果如下所示</p>\
@@ -122,19 +129,26 @@ else if (type == "license-plate-recognition"){
     Recall (右上)：\
     橫軸表示訓練的 epoch；縱軸表示召回率 (Recall)，召回率隨著訓練次數增加而迅速上升並穩定在高水平，表示大部分實際存在的車牌區域都被模型成功檢測出來。</p>\
     <figure class="work-figure">\
-        <img src="./images/1-8.jpg" alt="Precision 與 Recall 指標">\
+        <img src="./images/1-8.png" alt="Precision 與 Recall 指標">\
         <figcaption>Precision 與 Recall 指標</figcaption>\
     </figure>\
     <p>mAP@0.5 (左下)： 橫軸表示訓練的epoch；縱軸表示在 IoU 門檻為 0.5 時的平均準確率 (mean Average Precision, mAP)，值接近1，表示模型在判斷車牌區域時非常準確。\
     mAP@0.5:0.95 (右下)： 橫軸表示訓練的 epoch；縱軸表示在 IoU 門檻從 0.5 到 0.95 的平均準確率，隨著訓練次數增加，mAP 逐漸上升並穩定，表示模型在不同 IoU 門檻下都能保持較高的準確率。</p>\
     <figure class="work-figure">\
-        <img src="./images/1-9.jpg" alt="mAP@0.5 與 mAP@0.5:0.95 指標">\
+        <img src="./images/1-9.png" alt="mAP@0.5 與 mAP@0.5:0.95 指標">\
         <figcaption>mAP@0.5 與 mAP@0.5:0.95 指標</figcaption>\
+    </figure>\
+    <p>以下為 Confusion matrix</p>\
+    <figure class="work-figure">\
+        <img src="./images/1-17.png" alt="車牌辨識 confusion matrix">\
+        <figcaption>車牌辨識 Confusion matrix</figcaption>\
     </figure>\
     <p>以下為車牌位置辨識模型測試示意圖</p>\
     <figure class="work-figure">\
-        <img src="./images/1-10.jpg" alt="車牌測試圖">\
-        <img src="./images/1-11.jpg" alt="車牌測試圖">\
+        <div class="flex">\
+            <img src="./images/1-10.jpg" alt="車牌測試圖">\
+            <img src="./images/1-11.jpg" alt="車牌測試圖">\
+        </div>\
         <figcaption>車牌辨識測試示意圖</figcaption>\
     </figure>\
     <h3>使用 EasyOCR 偵測車牌號碼</h3>\
